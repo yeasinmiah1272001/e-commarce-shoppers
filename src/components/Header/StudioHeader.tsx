@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-// @ts-ignore
-const StudioHeader = (props) => {
+const StudioHeader = (props: any) => {
   return (
     <div>
       <div className="flex justify-between items-center p-3 bg-slate-200 ">

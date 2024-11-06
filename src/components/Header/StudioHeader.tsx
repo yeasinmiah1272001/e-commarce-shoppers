@@ -1,32 +1,15 @@
 import Link from "next/link";
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-  AwaitedReactNode,
-} from "react";
-const StudioHeader = (props: {
-  renderDefault: (
-    arg0: any
-  ) =>
-    | string
-    | number
-    | bigint
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | Iterable<ReactNode>
-    | ReactPortal
-    | Promise<AwaitedReactNode>
-    | Iterable<ReactNode>
-    | null
-    | undefined;
-}) => {
+
+interface StudioHeaderProps {
+  renderDefault: (props: any) => JSX.Element;
+}
+
+const StudioHeader: React.FC<StudioHeaderProps> = (props) => {
   return (
     <div>
-      <div className="flex justify-between items-center p-3 bg-slate-200 ">
+      <div className="flex justify-between items-center p-3 bg-slate-200">
         <Link
-          href={"/"}
+          href="/"
           className="bg-slate-100 p-2 rounded-md hover:bg-accent hover:text-white duration-300"
         >
           back to home page
@@ -34,7 +17,7 @@ const StudioHeader = (props: {
         <h1 className="text-black text-2xl md:text-3xl font-bold hover:text-lightOrange transition-colors duration-300 cursor-pointer">
           SHOPPERS
         </h1>
-        <h1>Admin Studion Shoppers for onlone paltform</h1>
+        <h1>Admin Studio Shoppers for online platform</h1>
       </div>
       {props.renderDefault(props)}
     </div>

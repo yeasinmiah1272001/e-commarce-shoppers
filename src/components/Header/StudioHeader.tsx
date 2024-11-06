@@ -1,6 +1,27 @@
 import Link from "next/link";
-
-const StudioHeader = (props: any) => {
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+  AwaitedReactNode,
+} from "react";
+const StudioHeader = (props: {
+  renderDefault: (
+    arg0: any
+  ) =>
+    | string
+    | number
+    | bigint
+    | boolean
+    | ReactElement<any, string | JSXElementConstructor<any>>
+    | Iterable<ReactNode>
+    | ReactPortal
+    | Promise<AwaitedReactNode>
+    | Iterable<ReactNode>
+    | null
+    | undefined;
+}) => {
   return (
     <div>
       <div className="flex justify-between items-center p-3 bg-slate-200 ">

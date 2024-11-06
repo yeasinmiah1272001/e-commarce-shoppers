@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Container from "../Container";
 
+// @ts-ignore
 const StudioHeader = (props) => {
   return (
     <div>

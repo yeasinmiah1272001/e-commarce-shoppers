@@ -45,7 +45,10 @@ const Banner = async () => {
 
         {/* iPhone 16 Banner */}
         {banner.slice(1, 3).map((item: BannerType) => (
-          <div className="bg-bgLight p-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+          <div
+            key={item._id}
+            className="bg-bgLight p-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0"
+          >
             <div className="text-center md:text-left space-y-2 md:w-1/2">
               <h2 className="text-lg font-semibold">{item.subtitle}</h2>
               <h1 className="text-2xl font-bold">{item.title}</h1>

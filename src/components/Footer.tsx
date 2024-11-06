@@ -9,22 +9,6 @@ import { navigation } from "@/constant";
 import { CgPaypal } from "react-icons/cg";
 
 const Footer = () => {
-  const navlink = [
-    { title: "Accesories", link: "/" },
-    { title: "Clothes", link: "/Clothes" },
-    { title: "Electronics", link: "/Electronics" },
-    { title: "Home appliances", link: "/Home appliances" },
-    { title: "New Arrivals", link: "/New Arrivals" },
-  ];
-
-  const nav = [
-    { title: "Profile", link: "/" },
-    { title: "Orders", link: "/Orders" },
-    { title: "Addresses", link: "/Addresses" },
-    { title: "Account Details", link: "/Account Details" },
-    { title: "Payment Options", link: "/Payment Options" },
-  ];
-
   return (
     <div className="bg-gray-600 text-white  lg:py-28">
       <Container className="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mx-auto justify-center items-start">

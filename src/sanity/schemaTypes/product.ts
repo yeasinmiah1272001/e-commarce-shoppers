@@ -1,4 +1,3 @@
-import { rule } from "postcss";
 import { defineField, defineType } from "sanity";
 
 export default defineType({

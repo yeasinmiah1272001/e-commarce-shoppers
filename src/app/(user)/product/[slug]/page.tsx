@@ -8,19 +8,16 @@ import { urlFor } from "@/sanity/lib/image";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
+import { GetStaticPropsContext } from "next"; // Import GetStaticPropsContext for static props context
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
+const SingleProductPage = async ({ params }: GetStaticPropsContext) => {
+  if (!params || typeof params.slug !== "string") {
+    return null; // Handle the case where params is not provided or slug is not a string
+  }
 
-const SingleProductPage = async ({ params }: Props) => {
-  const query = groq`*[_type == 'product' && slug.current == $slug][0]{
-    ...
-  }`;
-
+  const query = groq`*[_type == 'product' && slug.current == $slug][0]{ ... }`;
   const product = await client.fetch(query, { slug: params.slug });
+
   const rating =
     typeof product.rating === "number" && product.rating > 0
       ? Math.floor(product.rating)
@@ -55,7 +52,7 @@ const SingleProductPage = async ({ params }: Props) => {
               />
               <p>you saved</p>
               <FormatedPrice
-                className="text-sm font-bold text-white rounded-md p-1 bg-lightGreen "
+                className="text-sm font-bold text-white rounded-md p-1 bg-lightGreen"
                 amount={product.rowprice - product.price}
               />
               <p>form this item</p>

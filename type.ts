@@ -48,3 +48,10 @@ export interface Product {
   _updatedAt: string;
   quantity: number;
 }
+
+export interface StateType {
+  name: {
+    cart: Product[];
+    userInfo: any;
+  };
+}

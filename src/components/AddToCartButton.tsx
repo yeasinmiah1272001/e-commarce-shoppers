@@ -1,6 +1,9 @@
 "use client";
 import { twMerge } from "tailwind-merge";
 import { Product } from "../../type";
+import { useDispatch } from "react-redux";
+import { addToCsrt } from "@/redux/shopperSlice";
+import toast from "react-hot-toast";
 
 interface Props {
   item: Product;
@@ -8,8 +11,10 @@ interface Props {
 }
 
 const AddToCartButton = ({ item, className }: Props) => {
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
-    console.log(item);
+    dispatch(addToCsrt(item));
+    toast.success("product added");
   };
   return (
     <div className="w-full">

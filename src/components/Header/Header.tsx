@@ -1,18 +1,25 @@
+"use client";
 import React from "react";
 import Container from "../Container";
 import { navigation } from "@/constant";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
+import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+
   return (
-    <header className="border-b border-lightText py-2 shadow-sm">
+    <header className="border-b border-lightText py-2 shadow-sm cursor-pointer">
       <Container className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
         {/* Logo Section */}
         <div>
-          <h1 className="text-black text-2xl md:text-3xl font-bold hover:text-lightOrange transition-colors duration-300 cursor-pointer">
+          <Link
+            href={"/"}
+            className="text-black text-2xl md:text-3xl font-bold hover:text-lightOrange transition-colors duration-300 cursor-pointer"
+          >
             SHOPPERS
-          </h1>
+          </Link>
         </div>
 
         {/* Search Bar */}
@@ -41,6 +48,11 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            {session?.user ? (
+              <li onClick={() => signOut()}>SignOut</li>
+            ) : (
+              <Link href={"/signup"}>Login</Link>
+            )}
           </ul>
         </nav>
       </Container>

@@ -10,17 +10,13 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 const SingleProductPage = async ({ params }: Props) => {
-  const query = groq`*[_type == 'product' && slug.current == $slug][0]{
-    ...
-  }`;
+  const query = groq`*[_type == 'product' && slug.current == $slug][0]{ ... }`;
 
-  const product = await client.fetch(query, { slug: params?.slug });
+  const product = await client.fetch(query, { slug: params.slug });
   const rating =
     typeof product.rating === "number" && product.rating > 0
       ? Math.floor(product.rating)
@@ -28,12 +24,12 @@ const SingleProductPage = async ({ params }: Props) => {
 
   return (
     <div className="bg-bgLight py-10">
-      <Container className="">
+      <Container>
         <div className="grid gap-10 lg:grid-cols-2 justify-between w-full">
           <div className="flex justify-center lg:justify-end">
             <Image
               className="w-full max-w-md rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-              src={urlFor(product?.image).url()}
+              src={urlFor(product.image).url()}
               width={500}
               height={500}
               alt="Product Image"
@@ -55,7 +51,7 @@ const SingleProductPage = async ({ params }: Props) => {
               />
               <p>you saved</p>
               <FormatedPrice
-                className="text-sm font-bold text-white rounded-md p-1 bg-lightGreen "
+                className="text-sm font-bold text-white rounded-md p-1 bg-lightGreen"
                 amount={product.rowprice - product.price}
               />
               <p>form this item</p>

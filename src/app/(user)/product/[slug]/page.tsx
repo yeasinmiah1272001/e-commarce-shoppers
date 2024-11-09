@@ -25,7 +25,7 @@ const SingleProductPage = async ({ params }: Props) => {
 
   return (
     <div className="bg-bgLight py-10">
-      <Container>
+      <Container className="cursor-pointer">
         <div className="grid gap-10 lg:grid-cols-2 justify-between w-full">
           <div className="flex justify-center lg:justify-end">
             <Image

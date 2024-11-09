@@ -63,8 +63,8 @@ const ProductCart = () => {
         // Proceed with redirect to Stripe checkout
         await stripe?.redirectToCheckout({ sessionId: data.sessionId });
 
-        // After checkout, reset the order in Redux
-        dispatch(resetOrder()); // Reset the cart in Redux
+        // // After checkout, reset the order in Redux
+        // dispatch(resetOrder()); // Reset the cart in Redux
       } else {
         toast.error(data.message || "Payment failed. Please try again.");
       }

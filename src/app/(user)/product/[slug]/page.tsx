@@ -10,15 +10,14 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>; // Wrap params in a Promise to satisfy type constraint
 }
 
 const SingleProductPage = async ({ params }: Props) => {
+  const resolvedParams = await params; // Await params here to resolve it
   const query = groq`*[_type == 'product' && slug.current == $slug][0]{ ... }`;
 
-  const product = await client.fetch(query, { slug: params.slug });
+  const product = await client.fetch(query, { slug: resolvedParams.slug });
   const rating =
     typeof product.rating === "number" && product.rating > 0
       ? Math.floor(product.rating)
@@ -26,7 +25,7 @@ const SingleProductPage = async ({ params }: Props) => {
 
   return (
     <div className="bg-bgLight py-10">
-      <Container className="cursor-pointer">
+      <Container>
         <div className="grid gap-10 lg:grid-cols-2 justify-between w-full">
           <div className="flex justify-center lg:justify-end">
             <Image

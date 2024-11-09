@@ -10,7 +10,6 @@ import {
   allRemove,
   deceressQuantity,
   incressQuantity,
-  resetOrder,
   singeDelete,
 } from "@/redux/shopperSlice";
 import FormatedPrice from "./FormatedPrice";

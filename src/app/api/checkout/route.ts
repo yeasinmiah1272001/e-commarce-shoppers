@@ -39,14 +39,7 @@ export const POST = async (request: NextRequest) => {
       { url: session.url, sessionId: session.id },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error("Stripe error", error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: error.message || "Stripe checkout session creation failed",
-      },
-      { status: 500 }
-    );
   }
 };

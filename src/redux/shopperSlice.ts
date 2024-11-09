@@ -60,12 +60,12 @@ export const counterSlice = createSlice({
       state.cart = [];
     },
 
-    addToFavourite: (state, action) => {
-      const existingProduct = state.favourite.find(
-        (item) => item._id === action.payload._id
-      );
-      state.favourite.push(action.payload);
-    },
+    // addToFavourite: (state, action) => {
+    //   const existingProduct = state.favourite.find(
+    //     (item) => item._id === action.payload._id
+    //   );
+    //   state.favourite.push(action.payload);
+    // },
     removeFavourite: (state) => {
       state.favourite = [];
     },
@@ -91,7 +91,7 @@ export const {
   deceressQuantity,
   singeDelete,
   allRemove,
-  addToFavourite,
+
   removeFavourite,
   addUser,
   removeUser,

@@ -10,7 +10,9 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 interface Props {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
 }
 
 const SingleProductPage = async ({ params }: Props) => {
@@ -24,7 +26,7 @@ const SingleProductPage = async ({ params }: Props) => {
 
   return (
     <div className="bg-bgLight py-10">
-      <Container>
+      <Container className="cursor-pointer">
         <div className="grid gap-10 lg:grid-cols-2 justify-between w-full">
           <div className="flex justify-center lg:justify-end">
             <Image
@@ -54,7 +56,7 @@ const SingleProductPage = async ({ params }: Props) => {
                 className="text-sm font-bold text-white rounded-md p-1 bg-lightGreen"
                 amount={product.rowprice - product.price}
               />
-              <p>form this item</p>
+              <p>from this item</p>
             </div>
             <div className="flex items-center gap-1 text-yellow-500 text-xl">
               {[...Array(rating)].map((_, index) => (
